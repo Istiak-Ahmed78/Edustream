@@ -68,7 +68,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: 📝 Create .env from secrets
+      - name: 📝 Create .env from secrets with secret file attached
         run: |
           cat > .env << EOF
           AGORA_APP_ID=${{ secrets.AGORA_APP_ID }}
