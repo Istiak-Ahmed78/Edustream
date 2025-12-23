@@ -17,6 +17,19 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+      - name: Create dummy .env
+        run: |
+          cat > .env << EOF
+          AGORA_APP_ID=dummy_app_id
+          AGORA_TOKEN=
+          FIREBASE_API_KEY=dummy_key
+          FIREBASE_PROJECT_ID=dummy_project
+          FIREBASE_MESSAGING_SENDER_ID=123456
+          API_URL=https://api.example.com
+          API_KEY=dummy_key
+          ENVIRONMENT=development
+          APP_NAME=Video Call App
+          EOF
 
       - run: flutter pub get
   test:
@@ -29,6 +42,19 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+      - name: Create dummy .env
+        run: |
+          cat > .env << EOF
+          AGORA_APP_ID=dummy_app_id
+          AGORA_TOKEN=
+          FIREBASE_API_KEY=dummy_key
+          FIREBASE_PROJECT_ID=dummy_project
+          FIREBASE_MESSAGING_SENDER_ID=123456
+          API_URL=https://api.example.com
+          API_KEY=dummy_key
+          ENVIRONMENT=development
+          APP_NAME=Video Call App
+          EOF
 
       - run: flutter pub get
       - run: flutter test
@@ -42,8 +68,31 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-
+      - name: 📝 Create .env from secrets
+        run: |
+          cat > .env << EOF
+          AGORA_APP_ID=${{ secrets.AGORA_APP_ID }}
+          AGORA_TOKEN=${{ secrets.AGORA_TOKEN }}
+          FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}
+          FIREBASE_PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_MESSAGING_SENDER_ID=${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          API_URL=${{ secrets.API_URL }}
+          API_KEY=${{ secrets.API_KEY }}
+          ENVIRONMENT=production
+          APP_NAME=Video Call App
+          EOF
       - run: flutter pub get
+      - name: Generate Env codes
+        run: dart run build_runner build --delete-conflicting-outputs
+      # Verify env.g.dart was created
+      - name: ✅ Verify generated files
+        run: |
+          if [ ! -f "lib/config/env.g.dart" ]; then
+            echo "Error: env.g.dart not generated!"
+            exit 1
+          fi
+          echo "✅ env.g.dart generated successfully"
+      
       - run: flutter build apk --release
       - name: Uplaod APK
         uses: actions/upload-artifact@v4

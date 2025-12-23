@@ -32,10 +32,11 @@ class _AudioCallScreenState extends State<AudioCallScreen> {
       setState(() => _isLoading = false);
     } catch (e) {
       setState(() => _isLoading = false);
-      if (mounted)
+      if (mounted) {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
     }
   }
 

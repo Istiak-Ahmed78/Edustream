@@ -45,10 +45,13 @@ dependencies:
   agora_rtc_engine: ^6.2.0
   permission_handler: ^12.0.1
   google_sign_in: ^6.1.0
+  envied: ^0.5.4+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  envied_generator: ^0.5.4+1
+  build_runner: ^2.4.7
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

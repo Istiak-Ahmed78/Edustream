@@ -43,3 +43,27 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Generated files
+*.g.dart
+*.freezed.dart
+*.gr.dart
+
+# Build files
+build/
+.dart_tool/
+
+# Android signing
+*.jks
+*.keystore
+key.properties
+android/app/google-services.json
+
+# iOS signing
+*.p12
+*.mobileprovision
+ios/Runner/GoogleService-Info.plist

@@ -1,10 +1,10 @@
-import 'dart:math';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
+import 'package:edustream/config/app_config.dart';
 import 'package:flutter/foundation.dart';
 
 class AgoraService {
   // Agora Configuration
-  static const String APP_ID = 'ec28ce83e2854e39adf61447c255112f';
+  static final String APP_ID = AppConfig.agoraAppId;
 
   late RtcEngine _agoraEngine;
   int? _localUid;
