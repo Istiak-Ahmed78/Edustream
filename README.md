@@ -5,11 +5,14 @@
 A real-time communication app built with Flutter that enables video and audio calling between users. The app features Firebase authentication (Email/Password and Google Sign-In), real-time user management with Firestore, and high-quality video/audio calls powered by Agora SDK. Users can view a list of registered users and instantly initiate calls with camera toggle, mic mute, and camera switching capabilities.
 
 ### 📸 Screenshots
-```
-[Add your app screenshots here]
-```
 
+<div align="center">
+  <img width="200" height="600" alt="Audio calling" src="https://github.com/user-attachments/assets/adc1de6f-79fe-4661-b11a-d69a693571d0" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <!-- 5 spaces gap -->
+  <img width="200" height="600" alt="Video calling" src="https://github.com/user-attachments/assets/7cb30ced-d2de-4c1b-ba99-d325967adde9" />
+</div>
 ---
+
 
 ## 🛠️ Technical Stack
 
@@ -64,7 +67,7 @@ flutter pub get
 flutterfire configure
 
 # Add Agora App ID in lib/services/agora_service.dart
-static const String APP_ID = 'YOUR_APP_ID';
+static const String APP_ID = '<---APP_ID---->';
 
 # Run
 flutter run
