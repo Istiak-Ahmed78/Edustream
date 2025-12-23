@@ -1,6 +1,6 @@
 name: Flutter Analysis
 
-on: [push, pull-request]
+on: [push, pull_request]
 jobs:
   Analysis:
     name: Analyse Code quality
