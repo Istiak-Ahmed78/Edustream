@@ -1,16 +1,77 @@
-# edustream
+# 📱 Flutter Video & Audio Calling App
 
-A new Flutter project.
+## 📝 Description
 
-## Getting Started
+A real-time communication app built with Flutter that enables video and audio calling between users. The app features Firebase authentication (Email/Password and Google Sign-In), real-time user management with Firestore, and high-quality video/audio calls powered by Agora SDK. Users can view a list of registered users and instantly initiate calls with camera toggle, mic mute, and camera switching capabilities.
 
-This project is a starting point for a Flutter application.
+### 📸 Screenshots
+```
+[Add your app screenshots here]
+```
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Technical Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### **Frontend**
+- **Framework:** Flutter 3.0+
+- **State Management:** Riverpod
+- **Language:** Dart 3.0+
+
+### **Backend Services**
+- **Authentication:** Firebase Authentication
+- **Database:** Cloud Firestore
+- **Real-time Communication:** Agora RTC SDK
+- **Local Storage:** SQLite (sqflite)
+
+### **Key Dependencies**
+```yaml
+dependencies:
+  flutter_riverpod: ^2.0.0
+  firebase_core: ^2.0.0
+  firebase_auth: ^4.0.0
+  cloud_firestore: ^4.0.0
+  google_sign_in: ^6.0.0
+  agora_rtc_engine: ^6.0.0
+  permission_handler: ^11.0.0
+```
+
+### **Architecture**
+- **Pattern:** Service-based architecture
+- **Services:**
+  - `AuthService` - Handles user authentication
+  - `AgoraService` - Manages RTC engine and call functionality
+  - `DatabaseService` - Local data persistence
+
+### **Features**
+- Email/Password & Google authentication
+- Real-time user list from Firestore
+- Video calling with PiP mode
+- Audio-only calling
+- Camera/microphone controls
+- Connection state monitoring
+
+---
+
+## 🚀 Quick Setup
+
+```bash
+# Clone and install
+git clone <repo-url>
+flutter pub get
+
+# Configure Firebase
+flutterfire configure
+
+# Add Agora App ID in lib/services/agora_service.dart
+static const String APP_ID = 'YOUR_APP_ID';
+
+# Run
+flutter run
+```
+
+---
+
+## 📄 License
+
+MIT License
