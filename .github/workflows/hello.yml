@@ -1,0 +1,13 @@
+name: My First Workflow
+on: [push]
+jobs:
+  how-everything-goes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World Action
+        run: echo "Hello, World!"
+
+      - name: Show date
+        run: date
+      - name: List files
+        run: ls -la
