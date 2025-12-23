@@ -1,13 +1,22 @@
-name: My First Workflow
-on: [push]
-jobs:
-  how-everything-goes:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Hello World Action
-        run: echo "Hello, World!"
+name: CI/CD Pipeline
+on:
+  push:
+    branches: [ production]
 
-      - name: Show date
-        run: date
-      - name: List files
-        run: ls -la
+jobs:
+  check_flutter:
+    name: Check Flutter Installation
+    runs-on: ubuntu-latest
+  steps:
+    - name: Checkoit respository
+      uses: actions/checkout@v3
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
+    
+    - name: Flutter doctor
+      run: flutter doctor -v
+    
+    - name: Flutter version
+      run: flutter --version
