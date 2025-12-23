@@ -1,22 +1,18 @@
-name: CI/CD Pipeline
-on:
-  push:
-    branches: [ production]
-
 jobs:
   check_flutter:
     name: Check Flutter Installation
     runs-on: ubuntu-latest
-  steps:
-    - name: Checkoit respository
-      uses: actions/checkout@v3
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: 'stable'
-    
-    - name: Flutter Doctor
-      run: flutter doctor -v
-    
-    - name: Flutter version
-      run: flutter --version
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      - name: Flutter version
+        run: flutter --version
