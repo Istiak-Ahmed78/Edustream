@@ -20,3 +20,9 @@ jobs:
         run: flutter build apk --release
       - name: Show APK location
         run: echo "APK built at build/app/outputs/flutter-apk/app-release.apk"
+      - name: Upload the APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 5
