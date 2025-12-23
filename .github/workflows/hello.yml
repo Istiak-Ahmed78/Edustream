@@ -1,28 +1,52 @@
-name: Flutter Analysis
+name: Parallel Processing
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main, production]
+  pull_request:
+    branches: [ main, production]
+
 jobs:
-  Analysis:
-    name: Analyse Code quality
+  Analyse:
+    name: Analyse Codebase
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Flutter Code
+      - name: Checkout code
         uses: actions/checkout@v3
-      - name: Flutter Setup
+      - name: Flutter set-up
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: Install Dependencies
-        run: flutter pub get
-      - name: Run Test
-        run: flutter test
-      - name: Build APK
-        run: flutter build apk --release
-      - name: Show APK location
-        run: echo "APK built at build/app/outputs/flutter-apk/app-release.apk"
-      - name: Upload the APK
-        uses: actions/upload-artifact@v4
+
+      - run: flutter pub get
+  test:
+    name: Run test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Flutter set-up
+        uses: subosito/flutter-action@v2
         with:
-          name: app-release.apk
+          channel: 'stable'
+
+      - run: flutter pub get
+      - run: flutter test
+  build:
+    name: Build Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Flutter set-up
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - run: flutter pub get
+      - run: flutter build apk --release
+      - name: Uplaod APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
-          retention-days: 5
