@@ -15,7 +15,7 @@ jobs:
       with:
         flutter-version: 'stable'
     
-    - name: Flutter doctor
+    - name: Flutter Doctor
       run: flutter doctor -v
     
     - name: Flutter version
