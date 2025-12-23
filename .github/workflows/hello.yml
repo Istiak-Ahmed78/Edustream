@@ -1,3 +1,8 @@
+name: CI/CD Pipeline
+on:
+  push:
+    branches: [ production]
+
 jobs:
   check_flutter:
     name: Check Flutter Installation
