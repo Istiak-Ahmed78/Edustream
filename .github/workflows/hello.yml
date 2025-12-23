@@ -1,23 +1,20 @@
-name: CI/CD Pipeline
-on:
-  push:
-    branches: [ production]
+name: Flutter Analysis
 
+on: [push, pull-request]
 jobs:
-  check_flutter:
-    name: Check Flutter Installation
+  Analysis:
+    name: Analyse Code quality
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Flutter Code
         uses: actions/checkout@v3
-
-      - name: Setup Flutter
+      - name: Flutter Setup
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-
-      - name: Flutter Doctor
-        run: flutter doctor -v
-
-      - name: Flutter version
-        run: flutter --version
+      - name: Install Dependencies
+        run: flutter pub get
+      - name: Run Flutter Analyze
+        run: dart format -- --output=none --set-exit-if-changed .
+      - name: Analyze Code
+        run: flutter analyze
